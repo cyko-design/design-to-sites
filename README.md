@@ -1,3 +1,5 @@
+![Design to Sites showcase: one design adapted for Desktop, Tablet and Mobile](images/design-to-sites-showcase.jpg)
+
 # Design to Sites
 
 A Figma Skill that converts an existing Figma Design into a responsive, Sites-ready layout.
