@@ -1,58 +1,170 @@
-# Figma Sites Prep
+# Design to Sites
 
-Prepare Figma Design layouts for manual transfer into Figma Sites, preserving visual design and content while improving Auto Layout, Fill/Hug/fixed sizing, nesting, responsive wrapping and component reuse.
+A Figma Skill that converts an existing Figma Design into a responsive, Sites-ready layout.
 
-**Workflow:** Figma Design → Prepared layout → Manual copy to Figma Sites → Final adjustments → Publish
+**You don't need to design every breakpoint yourself.** Give Design to Sites a Desktop, Tablet or Mobile design and it will adapt the design for the missing breakpoints while preserving the original visual language, content and hierarchy.
 
-## Required before publishing: image alt text
+**Desktop only → Desktop + Tablet + Mobile**  
+**Tablet only → Desktop + Tablet + Mobile**  
+**Mobile only → Desktop + Tablet + Mobile**
 
-**Manually add or verify image alt text in Figma Sites after transfer and before publishing. This workflow cannot reliably configure Sites alt text in Figma Design.**
+Your original design is preserved.
 
-Check every image, including media fills and component images. Describe meaningful images and mark purely decorative images as decorative in Sites accessibility settings. Suggested descriptions and Design layer names do not set Sites alt text. Resolve accessibility and publishing warnings before publishing. See [Figma's accessibility guide](https://help.figma.com/hc/en-us/articles/31242789265431-Improve-the-accessibility-of-your-site).
+## What it does
 
-## Requirements
+Design to Sites can:
 
-This Skill uses the portable `SKILL.md` format and should be compatible with **ChatGPT, Claude and other AI agents that support Agent Skills**, provided they can inspect and edit Figma Design through MCP. Check your chosen agent's installation instructions and supported Figma tools.
-
-| User | AI agent |
-| --- | --- |
-| Access to Figma Design **and Figma Sites**, with edit permission for both files. Performs the transfer, finishing checks and publication. | Skills available; Figma MCP connected and authorised, exposing native Design write tools with edit access to the target Design file. A read-only connection is insufficient. |
-
-The [current Figma MCP tools](https://developers.figma.com/docs/figma-mcp-server/tools-and-prompts/) do not provide Sites write access. Installing this Skill does not grant permissions or add tools. Availability depends on the account and connected client.
+- **Create the responsive breakpoints you haven't designed**
+- Convert a Desktop, Tablet or Mobile design into a responsive Sites-ready layout
+- Adapt layouts intelligently rather than simply scaling them
+- Detect whether the source uses Auto Layout
+- Reconstruct layouts using Auto Layout when it is missing or incomplete
+- Apply appropriate Fill, Hug, fixed sizing, wrapping and responsive behaviour
+- Preserve the original visual design, content and hierarchy
+- Preserve and reuse existing components where appropriate
+- Create URL-safe, semantic names for image assets
+- Prepare meaningful alt-text descriptions for images
+- Perform design-level accessibility checks against WCAG 2.2 AA
+- Automatically correct suitable accessibility issues with minimal visual change
+- Preserve the original source design
 
 ## Install
 
-Download [figma-sites-prep.zip](https://github.com/cyko-design/figma-sites-prep/raw/refs/heads/main/figma-sites-prep.zip). The ZIP contains one top-level `figma-sites-prep/` folder with [SKILL.md](SKILL.md) and this README. To package a clone, run from the directory containing the repository folder:
+1. Download [SKILL.md](SKILL.md) from this repository.
+2. Open Figma Design and start an Agent chat.
+3. Click in the prompt box, then select **Skills → Add skill**.
+4. Select **Upload a file** and upload `SKILL.md`. Review the name (`design-to-sites`), description and instructions, then click **Add**.
+5. Run the Skill with `/design-to-sites`.
 
-```sh
-zip figma-sites-prep.zip figma-sites-prep/SKILL.md figma-sites-prep/README.md
-```
+Figma accepts a single Markdown file for a custom Skill. The Sites and WCAG rules are embedded in `SKILL.md`; the files in `references/` are repository documentation, not additional files to upload. See [Figma's official installation instructions](https://help.figma.com/hc/en-us/articles/40283639496599-Create-and-manage-custom-skills-in-Figma).
 
-### ChatGPT
+## How to use
 
-1. Open **Skills → New Skill → Upload from your computer** and upload the ZIP. The [official installation walkthrough](https://developers.openai.com/cookbook/examples/chatgpt/chatgpt_prompt_guide/chatgpt_prompt_guide) opens Skills from the profile menu; entry points may vary.
-2. Connect and authorise Figma, then start a new chat.
+Select or identify the design you want to convert, then run:
 
-### Claude
+`/design-to-sites`
 
-1. Enable **Code execution and file creation** in **Settings → Capabilities**. On Team or Enterprise, check that your organisation permits Skills and code execution.
-2. Open **Customize → Skills → + → Create skill → Upload a skill**, then upload the ZIP.
-3. Toggle the Skill on, connect and authorise Figma with native Design write tools, then use the prompt below.
+Design to Sites analyses the source design, its structure and any existing responsive layouts before beginning the conversion.
 
-See [Claude's official Skills installation guide](https://support.claude.com/en/articles/12512180-use-skills-in-claude) for current steps and account requirements.
+It can work in either direction:
 
-### Other AI agents
+**Desktop → Tablet + Mobile**
 
-Follow your chosen agent's official instructions for installing `SKILL.md` packages and connecting Figma MCP. Some agents load a local skill folder rather than a ZIP. Installing the Skill cannot enable unavailable Skills features or Design write tools.
+**Tablet → Desktop + Mobile**
 
-## Use
+**Mobile → Tablet + Desktop**
 
-> Use Figma Sites Prep to prepare this Figma Design frame for Sites: [Figma Design frame URL]. Preserve its visual design and content. Create a separate preparation copy. This copy is for Sites only.
+When adapting between form factors, the Skill preserves the existing design system, hierarchy and visual language rather than simply enlarging or shrinking the layout.
 
-Include a destination link if needed. Your AI agent prepares the layout in **Figma Design**; you [copy it into Figma Sites](https://help.figma.com/hc/en-us/articles/35895740494231-Figma-Sites-collection-Move-designs-from-Figma-Design-to-Figma-Sites) manually.
+If a major design decision cannot reasonably be inferred from the source, the Skill asks before making a substantial design change.
 
-**Also using the Design with Codex or another implementation workflow?** Say so first. The Skill requires explicit confirmation of priority and edit target before restructuring, because Sites-oriented structure may conflict with implementation needs. A separate Sites copy preserves the shared source.
+## Auto Layout
 
-## After transfer
+The source does **not** need to already use Auto Layout.
 
-Expect adjustments to responsive breakpoints, wrapping, mobile hamburger navigation, links, interactions and Sites-specific settings. Preview desktop and mobile, complete the **required alt-text review above**, and resolve publishing warnings. The Skill minimises manual work; final Sites behaviour requires verification in Sites.
+Design to Sites checks whether Auto Layout is fully implemented, partially implemented, missing or mixed with absolute positioning.
+
+Where necessary, the Skill reconstructs the converted layout using responsive Auto Layout relationships while preserving the visual intent of the original.
+
+**The original source design is not modified.**
+
+## Responsive conversion
+
+The converted design targets three responsive layouts:
+
+- **Desktop**
+- **Tablet**
+- **Mobile**
+
+The Skill adapts layout behaviour rather than simply scaling the original design.
+
+This can include changes to:
+
+- Navigation
+- Content columns and grids
+- Wrapping
+- Spacing and alignment
+- Image behaviour
+- Section sizing
+- Content flow
+
+For example, full desktop navigation may become a hamburger menu on Mobile.
+
+## Accessibility
+
+Design to Sites performs design-level checks against **WCAG 2.2 Level AA** where those checks can reasonably be determined from the Figma design.
+
+Before conversion, the Skill asks:
+
+> **Accessibility check**
+>
+> Design to Sites includes WCAG 2.2 AA design-level checks. Accessibility corrections may make **minimal adjustments** to colours, contrast, sizing or spacing. Changes will stay as close as possible to the original design while meeting accessibility requirements.
+>
+> **Continue with automatic accessibility corrections?**
+
+When enabled, the Skill makes the **smallest adjustment necessary** to address applicable accessibility issues while preserving the original design intent.
+
+If meeting a requirement would cause a substantial visual change, the Skill does not apply it automatically and asks the user first.
+
+Checks may include:
+
+- Text and UI colour contrast
+- Readability
+- Touch/click target sizing
+- Content hierarchy
+- Information communicated by colour
+- Responsive accessibility issues
+- Image naming and alt-text preparation
+
+Design to Sites does **not** claim that the resulting website is WCAG compliant.
+
+Some accessibility requirements can only be tested on the functioning Site, including keyboard navigation, screen-reader behaviour, focus order and runtime semantics.
+
+## Image assets and Alt Text
+
+Image assets are given meaningful, URL-safe names wherever possible.
+
+For example:
+
+`Hero Image` → `hero-image`
+
+`Product Screenshot 01` → `product-screenshot-01`
+
+Asset names use lowercase characters and hyphens, with no spaces or unnecessary special characters.
+
+The Skill also prepares meaningful alt-text descriptions for relevant images. Decorative images are identified as decorative rather than given unnecessary descriptive alt text.
+
+> **Important: Alt text must still be checked and applied in Figma Sites where required before publishing.**
+
+Accessibility properties available in Figma Sites are not necessarily available in Figma Design. Asset naming and prepared descriptions assist the Sites handoff but do not replace the final accessibility check.
+
+## After conversion
+
+Review the converted design and move it into Figma Sites.
+
+A short Sites-specific finishing pass may still be required for:
+
+- Responsive breakpoint behaviour
+- Mobile navigation
+- Interactions and links
+- Accessibility properties
+- **Alt text**
+- Publishing warnings
+
+Always preview Desktop, Tablet and Mobile layouts before publishing.
+
+## Limitations
+
+Design to Sites prepares and adapts designs for Figma Sites, but it does not guarantee a completely finished website.
+
+Some behaviour and accessibility properties are specific to Figma Sites and must be configured or verified after conversion.
+
+The quality of responsive adaptation also depends on how much design intent can be inferred from the source. When a significant responsive design decision cannot be safely inferred, the Skill asks rather than inventing one.
+
+## Legacy MCP version
+
+The original ChatGPT/MCP version of this Skill is retained under `/legacy-mcp` for reference.
+
+**The MCP version is outdated and is no longer recommended for normal use.**
+
+The Figma-native version runs directly within Figma and is now the primary version of Design to Sites.
