@@ -30,23 +30,19 @@ Design to Sites can:
 - Automatically correct suitable accessibility issues with minimal visual change
 - Preserve the original source design
 
-## Install
+## Get the Skill
 
-1. Download [SKILL.md](SKILL.md) from this repository.
-2. Open Figma Design and start an Agent chat.
-3. Click in the prompt box, then select **Skills → Add skill**.
-4. Select **Upload a file** and upload `SKILL.md`. Review the name (`design-to-sites`), description and instructions, then click **Add**.
-5. Run the Skill with `/design-to-sites`.
+**Design to Sites is available directly from Figma Community:**
 
-Figma accepts a single Markdown file for a custom Skill. The Sites and WCAG rules are embedded in `SKILL.md`; the files in `references/` are repository documentation, not additional files to upload. See [Figma's official installation instructions](https://help.figma.com/hc/en-us/articles/40283639496599-Create-and-manage-custom-skills-in-Figma).
+https://www.figma.com/community/skill/143297
+
+Open the Skill in Figma Community and select **Try in...** to use it with Figma Agent.
 
 ## How to use
 
-Select or identify the design you want to convert, then run:
+Open or select the Figma Design you want to convert and run **Design to Sites** using Figma Agent.
 
-`/design-to-sites`
-
-Design to Sites analyses the source design, its structure and any existing responsive layouts before beginning the conversion.
+The Skill analyses the source design, its structure and any existing responsive layouts before beginning the conversion.
 
 It can work in either direction:
 
@@ -162,6 +158,14 @@ Design to Sites prepares and adapts designs for Figma Sites, but it does not gua
 Some behaviour and accessibility properties are specific to Figma Sites and must be configured or verified after conversion.
 
 The quality of responsive adaptation also depends on how much design intent can be inferred from the source. When a significant responsive design decision cannot be safely inferred, the Skill asks rather than inventing one.
+
+## Source
+
+This repository contains the source instructions for **Design to Sites**.
+
+For normal use, install or run the published version from Figma Community:
+
+https://www.figma.com/community/skill/143297
 
 ## Legacy MCP version
 
